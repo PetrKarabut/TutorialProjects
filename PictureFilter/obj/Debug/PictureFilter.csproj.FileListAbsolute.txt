@@ -1,0 +1,10 @@
+c:\users\петр\source\repos\PictureFilter\PictureFilter\bin\Debug\PictureFilter.exe.config
+c:\users\петр\source\repos\PictureFilter\PictureFilter\bin\Debug\PictureFilter.exe
+c:\users\петр\source\repos\PictureFilter\PictureFilter\bin\Debug\PictureFilter.pdb
+c:\users\петр\source\repos\PictureFilter\PictureFilter\obj\Debug\PictureFilter.csprojResolveAssemblyReference.cache
+c:\users\петр\source\repos\PictureFilter\PictureFilter\obj\Debug\PictureFilter.Properties.Resources.resources
+c:\users\петр\source\repos\PictureFilter\PictureFilter\obj\Debug\PictureFilter.csproj.GenerateResource.Cache
+c:\users\петр\source\repos\PictureFilter\PictureFilter\obj\Debug\PictureFilter.csproj.CoreCompileInputs.cache
+c:\users\петр\source\repos\PictureFilter\PictureFilter\obj\Debug\PictureFilter.exe
+c:\users\петр\source\repos\PictureFilter\PictureFilter\obj\Debug\PictureFilter.pdb
+c:\users\петр\source\repos\PictureFilter\PictureFilter\obj\Debug\PictureFilter.Form1.resources
