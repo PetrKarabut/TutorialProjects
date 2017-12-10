@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace PictureFilter
 {
-    public partial class Form1 : Form
+    public partial class MainWindow : Form
     {
         public UserInterfaceController UIController { get; set; }
 
@@ -21,15 +21,15 @@ namespace PictureFilter
 
         private Panel currentPanel;
 
-        public Form1()
+        public MainWindow()
         {
             InitializeComponent();
         }
 
         public void Init()
         {
-            UIController.OpenNewImage(pictureBox1.Image);
-            comboBox1.SelectedIndex = 0;
+            UIController.OpenNewImage(originalPictureBox.Image);
+            transformationSelectComboBox.SelectedIndex = 0;
         }
 
 
@@ -43,7 +43,7 @@ namespace PictureFilter
             MessageBox.Show("Не удалось преобразовать картинку, возможно она имеет формат с индексированными пикселями. " +
                 "Попробуйте перевести ее в другой формат. Для этого нажмите сохранить и выберите нужный формат сохранения.");
             UIController.ClearTransform();
-            panel1.Visible = true;
+            controlsPanel.Visible = true;
         }
 
 
@@ -70,17 +70,17 @@ namespace PictureFilter
 
         public void ShowTransformedPicture(Image picture)
         {
-            pictureBox2.Image = (Image)picture.Clone();
-            DrawBorder(pictureBox2.Image, Color.Green);
-            panel1.Visible = true;
+            transformedPictureBox.Image = (Image)picture.Clone();
+            DrawBorder(transformedPictureBox.Image, Color.Green);
+            controlsPanel.Visible = true;
         }
 
         public void OnImageSelected(Image picture)
         {
-            pictureBox1.Image = (Image)picture.Clone();
-            pictureBox2.Image = (Image)picture.Clone();
-            DrawBorder(pictureBox1.Image, Color.Green);
-            DrawBorder(pictureBox2.Image, Color.Green);
+            originalPictureBox.Image = (Image)picture.Clone();
+            transformedPictureBox.Image = (Image)picture.Clone();
+            DrawBorder(originalPictureBox.Image, Color.Green);
+            DrawBorder(transformedPictureBox.Image, Color.Green);
         }
 
         private void DrawBorder(Image picture, Color borderColor)
@@ -134,16 +134,16 @@ namespace PictureFilter
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+            if (openPictureFileDialog.ShowDialog() == DialogResult.Cancel)
                 return;
-            UIController.OpenNewImage(openFileDialog1.FileName);
+            UIController.OpenNewImage(openPictureFileDialog.FileName);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UIController.SelectTransform(comboBox1.SelectedIndex);
+            UIController.SelectTransform(transformationSelectComboBox.SelectedIndex);
             SetActivePanel(currentPanel, false);
-            SetActivePanel(GetParamsPanel(comboBox1.SelectedIndex), true);
+            SetActivePanel(GetParamsPanel(transformationSelectComboBox.SelectedIndex), true);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -153,8 +153,8 @@ namespace PictureFilter
 
         private void button3_Click(object sender, EventArgs e)
         {
-            panel1.Visible = false;
-            pictureBox2.Image = Properties.Resources.loadingPic;
+            controlsPanel.Visible = false;
+            transformedPictureBox.Image = Properties.Resources.loadingPic;
             UIController.ApplyTransform();
 
         }
@@ -232,8 +232,8 @@ namespace PictureFilter
                 return;
             }
 
-            UIController.GetPicture().Save(saveFileDialog1.FileName, saveFormats[saveFileDialog1.FilterIndex]);
-
+            UIController.GetPicture().Save(saveFileDialog1.FileName, saveFormats[saveFileDialog1.FilterIndex - 1]); 
+            // свойство FileDialog.FilterIndex выдает индексы начиная с 1
         }
     }
 }

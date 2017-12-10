@@ -9,7 +9,7 @@ namespace PictureFilter
 {
     public class UserInterfaceController
     {
-        public Form1 WindowForm { get; set; }
+        public MainWindow WindowForm { get; set; }
         public PictureTransformer Transformer { get; set; }
 
         private Image startPicture;
@@ -18,7 +18,7 @@ namespace PictureFilter
         {
             try
             {
-                Image picture = Image.FromFile(path);
+                var picture = Image.FromFile(path);
                 startPicture = (Image)picture.Clone();
                 SelectImage(picture);
             }
@@ -70,7 +70,7 @@ namespace PictureFilter
             return Transformer.Picture;
         }
 
-        void SelectImage(Image picture)
+        private void SelectImage(Image picture)
         {
             WindowForm.OnImageSelected(picture);
             Transformer.SetPicture(picture);

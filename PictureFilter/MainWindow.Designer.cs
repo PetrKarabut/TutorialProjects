@@ -1,6 +1,6 @@
 ﻿namespace PictureFilter
 {
-    partial class Form1
+    partial class MainWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.loadButton = new System.Windows.Forms.Button();
+            this.openPictureFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.transformationSelectComboBox = new System.Windows.Forms.ComboBox();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.applyButton = new System.Windows.Forms.Button();
+            this.transformedPictureBox = new System.Windows.Forms.PictureBox();
+            this.originalPictureBox = new System.Windows.Forms.PictureBox();
+            this.controlsPanel = new System.Windows.Forms.Panel();
             this.saveButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.transformationsTitleLabel = new System.Windows.Forms.Label();
             this.BrightnessParamsPanel = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.brightnessPercentLabel = new System.Windows.Forms.Label();
+            this.brightnessLabel = new System.Windows.Forms.Label();
             this.decreaseBright = new System.Windows.Forms.RadioButton();
             this.increaseBright = new System.Windows.Forms.RadioButton();
             this.brightNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.ContrastPanel = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.contrastPercentLabel = new System.Windows.Forms.Label();
+            this.contrastLabel = new System.Windows.Forms.Label();
             this.contrastDecrease = new System.Windows.Forms.RadioButton();
             this.contrastIncrease = new System.Windows.Forms.RadioButton();
             this.contrastPercent = new System.Windows.Forms.NumericUpDown();
@@ -54,9 +54,9 @@
             this.GammaTextBox = new System.Windows.Forms.MaskedTextBox();
             this.labelGamma = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.transformedPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.originalPictureBox)).BeginInit();
+            this.controlsPanel.SuspendLayout();
             this.BrightnessParamsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.brightNumericUpDown)).BeginInit();
             this.ContrastPanel.SuspendLayout();
@@ -64,90 +64,90 @@
             this.GammaPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // loadButton
             // 
-            this.button1.Location = new System.Drawing.Point(24, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(73, 30);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Загрузить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.loadButton.Location = new System.Drawing.Point(24, 3);
+            this.loadButton.Name = "loadButton";
+            this.loadButton.Size = new System.Drawing.Size(73, 30);
+            this.loadButton.TabIndex = 1;
+            this.loadButton.Text = "Загрузить";
+            this.loadButton.UseVisualStyleBackColor = true;
+            this.loadButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // openFileDialog1
+            // openPictureFileDialog
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openPictureFileDialog.FileName = "openFileDialog1";
             // 
-            // comboBox1
+            // transformationSelectComboBox
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.transformationSelectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.transformationSelectComboBox.FormattingEnabled = true;
+            this.transformationSelectComboBox.Items.AddRange(new object[] {
             "Обращение цвета",
             "Перевод в черно-белое",
             "Изменение яркости",
             "Изменение контрастности",
             "Гамма"});
-            this.comboBox1.Location = new System.Drawing.Point(16, 371);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(295, 21);
-            this.comboBox1.TabIndex = 3;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.transformationSelectComboBox.Location = new System.Drawing.Point(16, 371);
+            this.transformationSelectComboBox.Name = "transformationSelectComboBox";
+            this.transformationSelectComboBox.Size = new System.Drawing.Size(295, 21);
+            this.transformationSelectComboBox.TabIndex = 3;
+            this.transformationSelectComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // button2
+            // clearButton
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(24, 49);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(372, 43);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "очистить";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.clearButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.clearButton.Location = new System.Drawing.Point(24, 49);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(372, 43);
+            this.clearButton.TabIndex = 4;
+            this.clearButton.Text = "очистить";
+            this.clearButton.UseVisualStyleBackColor = false;
+            this.clearButton.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // applyButton
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(24, 103);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(372, 54);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "применить";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.applyButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.applyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.applyButton.Location = new System.Drawing.Point(24, 103);
+            this.applyButton.Name = "applyButton";
+            this.applyButton.Size = new System.Drawing.Size(372, 54);
+            this.applyButton.TabIndex = 5;
+            this.applyButton.Text = "применить";
+            this.applyButton.UseVisualStyleBackColor = false;
+            this.applyButton.Click += new System.EventHandler(this.button3_Click);
             // 
-            // pictureBox2
+            // transformedPictureBox
             // 
-            this.pictureBox2.Image = global::PictureFilter.Properties.Resources.StartPicture;
-            this.pictureBox2.Location = new System.Drawing.Point(484, 12);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(414, 326);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
+            this.transformedPictureBox.Image = global::PictureFilter.Properties.Resources.StartPicture;
+            this.transformedPictureBox.Location = new System.Drawing.Point(484, 12);
+            this.transformedPictureBox.Name = "transformedPictureBox";
+            this.transformedPictureBox.Size = new System.Drawing.Size(414, 326);
+            this.transformedPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.transformedPictureBox.TabIndex = 2;
+            this.transformedPictureBox.TabStop = false;
             // 
-            // pictureBox1
+            // originalPictureBox
             // 
-            this.pictureBox1.Image = global::PictureFilter.Properties.Resources.StartPicture;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(414, 326);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.originalPictureBox.Image = global::PictureFilter.Properties.Resources.StartPicture;
+            this.originalPictureBox.Location = new System.Drawing.Point(12, 12);
+            this.originalPictureBox.Name = "originalPictureBox";
+            this.originalPictureBox.Size = new System.Drawing.Size(414, 326);
+            this.originalPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.originalPictureBox.TabIndex = 0;
+            this.originalPictureBox.TabStop = false;
             // 
-            // panel1
+            // controlsPanel
             // 
-            this.panel1.Controls.Add(this.saveButton);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Location = new System.Drawing.Point(484, 344);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(414, 160);
-            this.panel1.TabIndex = 6;
+            this.controlsPanel.Controls.Add(this.saveButton);
+            this.controlsPanel.Controls.Add(this.loadButton);
+            this.controlsPanel.Controls.Add(this.applyButton);
+            this.controlsPanel.Controls.Add(this.clearButton);
+            this.controlsPanel.Location = new System.Drawing.Point(484, 344);
+            this.controlsPanel.Name = "controlsPanel";
+            this.controlsPanel.Size = new System.Drawing.Size(414, 160);
+            this.controlsPanel.TabIndex = 6;
             // 
             // saveButton
             // 
@@ -159,47 +159,47 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // label1
+            // transformationsTitleLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 344);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(310, 24);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Выбор преобразования картинки";
+            this.transformationsTitleLabel.AutoSize = true;
+            this.transformationsTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.transformationsTitleLabel.Location = new System.Drawing.Point(12, 344);
+            this.transformationsTitleLabel.Name = "transformationsTitleLabel";
+            this.transformationsTitleLabel.Size = new System.Drawing.Size(310, 24);
+            this.transformationsTitleLabel.TabIndex = 7;
+            this.transformationsTitleLabel.Text = "Выбор преобразования картинки";
             // 
             // BrightnessParamsPanel
             // 
-            this.BrightnessParamsPanel.Controls.Add(this.label3);
-            this.BrightnessParamsPanel.Controls.Add(this.label2);
+            this.BrightnessParamsPanel.Controls.Add(this.brightnessPercentLabel);
+            this.BrightnessParamsPanel.Controls.Add(this.brightnessLabel);
             this.BrightnessParamsPanel.Controls.Add(this.decreaseBright);
             this.BrightnessParamsPanel.Controls.Add(this.increaseBright);
             this.BrightnessParamsPanel.Controls.Add(this.brightNumericUpDown);
-            this.BrightnessParamsPanel.Location = new System.Drawing.Point(459, 498);
+            this.BrightnessParamsPanel.Location = new System.Drawing.Point(458, 492);
             this.BrightnessParamsPanel.Name = "BrightnessParamsPanel";
-            this.BrightnessParamsPanel.Size = new System.Drawing.Size(19, 21);
+            this.BrightnessParamsPanel.Size = new System.Drawing.Size(11, 27);
             this.BrightnessParamsPanel.TabIndex = 8;
             this.BrightnessParamsPanel.Visible = false;
             // 
-            // label3
+            // brightnessPercentLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(175, 47);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 26);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "%";
+            this.brightnessPercentLabel.AutoSize = true;
+            this.brightnessPercentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.brightnessPercentLabel.Location = new System.Drawing.Point(175, 47);
+            this.brightnessPercentLabel.Name = "brightnessPercentLabel";
+            this.brightnessPercentLabel.Size = new System.Drawing.Size(32, 26);
+            this.brightnessPercentLabel.TabIndex = 4;
+            this.brightnessPercentLabel.Text = "%";
             // 
-            // label2
+            // brightnessLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(86, 52);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(19, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "на";
+            this.brightnessLabel.AutoSize = true;
+            this.brightnessLabel.Location = new System.Drawing.Point(86, 52);
+            this.brightnessLabel.Name = "brightnessLabel";
+            this.brightnessLabel.Size = new System.Drawing.Size(19, 13);
+            this.brightnessLabel.TabIndex = 3;
+            this.brightnessLabel.Text = "на";
             // 
             // decreaseBright
             // 
@@ -240,35 +240,35 @@
             // 
             // ContrastPanel
             // 
-            this.ContrastPanel.Controls.Add(this.label4);
-            this.ContrastPanel.Controls.Add(this.label5);
+            this.ContrastPanel.Controls.Add(this.contrastPercentLabel);
+            this.ContrastPanel.Controls.Add(this.contrastLabel);
             this.ContrastPanel.Controls.Add(this.contrastDecrease);
             this.ContrastPanel.Controls.Add(this.contrastIncrease);
             this.ContrastPanel.Controls.Add(this.contrastPercent);
-            this.ContrastPanel.Location = new System.Drawing.Point(459, 447);
+            this.ContrastPanel.Location = new System.Drawing.Point(458, 433);
             this.ContrastPanel.Name = "ContrastPanel";
-            this.ContrastPanel.Size = new System.Drawing.Size(12, 29);
+            this.ContrastPanel.Size = new System.Drawing.Size(11, 33);
             this.ContrastPanel.TabIndex = 9;
             this.ContrastPanel.Visible = false;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(175, 47);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 26);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "%";
+            this.contrastPercentLabel.AutoSize = true;
+            this.contrastPercentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.contrastPercentLabel.Location = new System.Drawing.Point(175, 47);
+            this.contrastPercentLabel.Name = "label4";
+            this.contrastPercentLabel.Size = new System.Drawing.Size(32, 26);
+            this.contrastPercentLabel.TabIndex = 4;
+            this.contrastPercentLabel.Text = "%";
             // 
-            // label5
+            // contrastLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(86, 52);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(19, 13);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "на";
+            this.contrastLabel.AutoSize = true;
+            this.contrastLabel.Location = new System.Drawing.Point(86, 52);
+            this.contrastLabel.Name = "contrastLabel";
+            this.contrastLabel.Size = new System.Drawing.Size(19, 13);
+            this.contrastLabel.TabIndex = 3;
+            this.contrastLabel.Text = "на";
             // 
             // contrastDecrease
             // 
@@ -311,9 +311,9 @@
             // 
             this.GammaPanel.Controls.Add(this.GammaTextBox);
             this.GammaPanel.Controls.Add(this.labelGamma);
-            this.GammaPanel.Location = new System.Drawing.Point(441, 389);
+            this.GammaPanel.Location = new System.Drawing.Point(458, 393);
             this.GammaPanel.Name = "GammaPanel";
-            this.GammaPanel.Size = new System.Drawing.Size(30, 33);
+            this.GammaPanel.Size = new System.Drawing.Size(11, 29);
             this.GammaPanel.TabIndex = 10;
             this.GammaPanel.Visible = false;
             // 
@@ -336,7 +336,7 @@
             this.labelGamma.TabIndex = 1;
             this.labelGamma.Text = "гамма параметр равен 1";
             // 
-            // Form1
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -345,17 +345,17 @@
             this.Controls.Add(this.GammaPanel);
             this.Controls.Add(this.ContrastPanel);
             this.Controls.Add(this.BrightnessParamsPanel);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.transformationsTitleLabel);
+            this.Controls.Add(this.transformationSelectComboBox);
+            this.Controls.Add(this.controlsPanel);
+            this.Controls.Add(this.transformedPictureBox);
+            this.Controls.Add(this.originalPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form1";
+            this.Name = "MainWindow";
             this.Text = "PictureFilter";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.transformedPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.originalPictureBox)).EndInit();
+            this.controlsPanel.ResumeLayout(false);
             this.BrightnessParamsPanel.ResumeLayout(false);
             this.BrightnessParamsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.brightNumericUpDown)).EndInit();
@@ -371,24 +371,24 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox originalPictureBox;
+        private System.Windows.Forms.Button loadButton;
+        private System.Windows.Forms.OpenFileDialog openPictureFileDialog;
+        private System.Windows.Forms.PictureBox transformedPictureBox;
+        private System.Windows.Forms.ComboBox transformationSelectComboBox;
+        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Button applyButton;
+        private System.Windows.Forms.Panel controlsPanel;
+        private System.Windows.Forms.Label transformationsTitleLabel;
         private System.Windows.Forms.Panel BrightnessParamsPanel;
         private System.Windows.Forms.NumericUpDown brightNumericUpDown;
         private System.Windows.Forms.RadioButton decreaseBright;
         private System.Windows.Forms.RadioButton increaseBright;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label brightnessPercentLabel;
+        private System.Windows.Forms.Label brightnessLabel;
         private System.Windows.Forms.Panel ContrastPanel;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label contrastPercentLabel;
+        private System.Windows.Forms.Label contrastLabel;
         private System.Windows.Forms.RadioButton contrastDecrease;
         private System.Windows.Forms.RadioButton contrastIncrease;
         private System.Windows.Forms.NumericUpDown contrastPercent;

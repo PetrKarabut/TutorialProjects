@@ -17,14 +17,14 @@ namespace PictureFilter
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var windowForm = new Form1();
-            var UIController = new UserInterfaceController();
+            var windowForm = new MainWindow();
+            var userInterfaceController = new UserInterfaceController();
             var transformer = new PictureTransformer();
 
-            windowForm.UIController = UIController;
-            UIController.WindowForm = windowForm;
-            UIController.Transformer = transformer;
-            transformer.UIController = UIController;
+            windowForm.UIController = userInterfaceController;
+            userInterfaceController.WindowForm = windowForm;
+            userInterfaceController.Transformer = transformer;
+            transformer.UIController = userInterfaceController;
 
             transformer.Init();
             windowForm.Init();

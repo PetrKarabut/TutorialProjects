@@ -13,13 +13,7 @@ namespace PictureFilter
         const double GreenCoefficient = 0.59;
         const double BlueCoefficient = 0.11;
 
-        public override void ChangePixelColor(Bitmap image, int x, int y)
-        {
-            Color pixel = image.GetPixel(x, y);
-            image.SetPixel(x, y, GetBlackWhiteColor(pixel));
-        }
-
-        private Color GetBlackWhiteColor(Color oldColor)
+        protected override Color ChangeColor(Color oldColor)
         {
             double grayScale = RedCoefficient * oldColor.R + GreenCoefficient * oldColor.G + BlueCoefficient * oldColor.B;
             if (grayScale > 255)
@@ -27,8 +21,9 @@ namespace PictureFilter
                 grayScale = 255;
             }
             byte grayScaleByte = (byte)Math.Round(grayScale);
-            Color newColor = Color.FromArgb(grayScaleByte, grayScaleByte, grayScaleByte);
-            return newColor;
+            return Color.FromArgb(grayScaleByte, grayScaleByte, grayScaleByte);
         }
+
+       
     }
 }

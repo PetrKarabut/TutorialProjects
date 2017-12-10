@@ -8,3 +8,13 @@ c:\users\петр\source\repos\PictureFilter\PictureFilter\obj\Debug\PictureFilt
 c:\users\петр\source\repos\PictureFilter\PictureFilter\obj\Debug\PictureFilter.exe
 c:\users\петр\source\repos\PictureFilter\PictureFilter\obj\Debug\PictureFilter.pdb
 c:\users\петр\source\repos\PictureFilter\PictureFilter\obj\Debug\PictureFilter.Form1.resources
+C:\Users\Петр\Desktop\Filters\TutorialProjects\PictureFilter\bin\Debug\PictureFilter.exe.config
+C:\Users\Петр\Desktop\Filters\TutorialProjects\PictureFilter\bin\Debug\PictureFilter.exe
+C:\Users\Петр\Desktop\Filters\TutorialProjects\PictureFilter\bin\Debug\PictureFilter.pdb
+C:\Users\Петр\Desktop\Filters\TutorialProjects\PictureFilter\obj\Debug\PictureFilter.csprojResolveAssemblyReference.cache
+C:\Users\Петр\Desktop\Filters\TutorialProjects\PictureFilter\obj\Debug\PictureFilter.Properties.Resources.resources
+C:\Users\Петр\Desktop\Filters\TutorialProjects\PictureFilter\obj\Debug\PictureFilter.csproj.GenerateResource.Cache
+C:\Users\Петр\Desktop\Filters\TutorialProjects\PictureFilter\obj\Debug\PictureFilter.csproj.CoreCompileInputs.cache
+C:\Users\Петр\Desktop\Filters\TutorialProjects\PictureFilter\obj\Debug\PictureFilter.exe
+C:\Users\Петр\Desktop\Filters\TutorialProjects\PictureFilter\obj\Debug\PictureFilter.pdb
+C:\Users\Петр\Desktop\Filters\TutorialProjects\PictureFilter\obj\Debug\PictureFilter.MainWindow.resources

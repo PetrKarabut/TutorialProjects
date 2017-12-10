@@ -63,7 +63,7 @@ namespace PictureFilter
 
         public void Init()
         {
-            var negative = new ImageFilter();
+            var negative = new ColorReversation();
             filters.Add(negative);
 
             var blackWhite = new TransformationToGray();
