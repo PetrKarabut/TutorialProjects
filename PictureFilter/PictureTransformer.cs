@@ -13,7 +13,7 @@ namespace PictureFilter
 
         private List<ImageFilter> filters = new List<ImageFilter>();
         private int index;
-
+                
         public Image Picture { get; private set; }
 
         private Brightness brightnessChanger;
@@ -81,6 +81,14 @@ namespace PictureFilter
             gamma.GammaParameter = 1;
             filters.Add(gamma);
             gammaTransform = gamma;
+
+            var bigPictureReaderWriter = new BigPictureReaderWriter();
+            var smallPictureReaderWriter = new SmallPictureReaderWriter();
+            var pictureReaderWriter = new PictureReaderWriterSelector(smallPictureReaderWriter, bigPictureReaderWriter);
+            foreach (ImageFilter filter in filters)
+            {
+                filter.PictureReaderWriter = pictureReaderWriter;
+            }
         }
 
 

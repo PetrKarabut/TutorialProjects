@@ -9,16 +9,16 @@ namespace PictureFilter
 {
    public class TransformationToGray : ImageFilter
     {
-        const double RedCoefficient = 0.3;
-        const double GreenCoefficient = 0.59;
-        const double BlueCoefficient = 0.11;
+        private const double RedCoefficient = 0.3;
+        private const double GreenCoefficient = 0.59;
+        private const double BlueCoefficient = 0.11;
 
         protected override Color ChangeColor(Color oldColor)
         {
             double grayScale = RedCoefficient * oldColor.R + GreenCoefficient * oldColor.G + BlueCoefficient * oldColor.B;
-            if (grayScale > 255)
+            if (grayScale > maxRgb)
             {
-                grayScale = 255;
+                grayScale = maxRgb;
             }
             byte grayScaleByte = (byte)Math.Round(grayScale);
             return Color.FromArgb(grayScaleByte, grayScaleByte, grayScaleByte);

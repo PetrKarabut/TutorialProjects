@@ -45,7 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filters\PictureReadersWriters\BigPictureReaderWriter.cs" />
     <Compile Include="Filters\Base\ImageFilter.cs" />
+    <Compile Include="Filters\PictureReadersWriters\IReadWritePicture.cs" />
+    <Compile Include="Filters\PictureReadersWriters\PictureReaderWriterSelector.cs" />
+    <Compile Include="Filters\PictureReadersWriters\SmallPictureReaderWriter.cs" />
     <Compile Include="Filters\Brightness.cs" />
     <Compile Include="Filters\Contrast.cs" />
     <Compile Include="MainWindow.cs">

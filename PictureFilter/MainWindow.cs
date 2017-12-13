@@ -153,6 +153,8 @@ namespace PictureFilter
 
         private void button3_Click(object sender, EventArgs e)
         {
+            UIController.ClearTransform();
+
             controlsPanel.Visible = false;
             transformedPictureBox.Image = Properties.Resources.loadingPic;
             UIController.ApplyTransform();

@@ -18,3 +18,13 @@ C:\Users\Петр\Desktop\Filters\TutorialProjects\PictureFilter\obj\Debug\Pictu
 C:\Users\Петр\Desktop\Filters\TutorialProjects\PictureFilter\obj\Debug\PictureFilter.exe
 C:\Users\Петр\Desktop\Filters\TutorialProjects\PictureFilter\obj\Debug\PictureFilter.pdb
 C:\Users\Петр\Desktop\Filters\TutorialProjects\PictureFilter\obj\Debug\PictureFilter.MainWindow.resources
+C:\Users\Петр\Desktop\GraphicFilters\TutorialProjects-master\TutorialProjects-master\PictureFilter\bin\Debug\PictureFilter.exe.config
+C:\Users\Петр\Desktop\GraphicFilters\TutorialProjects-master\TutorialProjects-master\PictureFilter\bin\Debug\PictureFilter.exe
+C:\Users\Петр\Desktop\GraphicFilters\TutorialProjects-master\TutorialProjects-master\PictureFilter\bin\Debug\PictureFilter.pdb
+C:\Users\Петр\Desktop\GraphicFilters\TutorialProjects-master\TutorialProjects-master\PictureFilter\obj\Debug\PictureFilter.csprojResolveAssemblyReference.cache
+C:\Users\Петр\Desktop\GraphicFilters\TutorialProjects-master\TutorialProjects-master\PictureFilter\obj\Debug\PictureFilter.MainWindow.resources
+C:\Users\Петр\Desktop\GraphicFilters\TutorialProjects-master\TutorialProjects-master\PictureFilter\obj\Debug\PictureFilter.Properties.Resources.resources
+C:\Users\Петр\Desktop\GraphicFilters\TutorialProjects-master\TutorialProjects-master\PictureFilter\obj\Debug\PictureFilter.csproj.GenerateResource.Cache
+C:\Users\Петр\Desktop\GraphicFilters\TutorialProjects-master\TutorialProjects-master\PictureFilter\obj\Debug\PictureFilter.csproj.CoreCompileInputs.cache
+C:\Users\Петр\Desktop\GraphicFilters\TutorialProjects-master\TutorialProjects-master\PictureFilter\obj\Debug\PictureFilter.exe
+C:\Users\Петр\Desktop\GraphicFilters\TutorialProjects-master\TutorialProjects-master\PictureFilter\obj\Debug\PictureFilter.pdb

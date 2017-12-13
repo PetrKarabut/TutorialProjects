@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 
 namespace PictureFilter
@@ -16,127 +17,14 @@ namespace PictureFilter
         protected const int halfRgb = 128;
         protected const int totalPercents = 100;
 
-        protected Color[,] colorsArray;
-        protected int xSize;
-        protected int ySize;
+        public IReadWritePicture PictureReaderWriter { get; set; }
 
-        private const int smallSize = 512;
-
-        private List<PixelFormat> GetIndexedFormats()
+        public static List<PixelFormat> GetIndexedFormats()
         {
-            var indexedFormats = new List<PixelFormat>();
-            indexedFormats.Add(PixelFormat.Indexed);
-            indexedFormats.Add(PixelFormat.Format1bppIndexed);
-            indexedFormats.Add(PixelFormat.Format4bppIndexed);
-            indexedFormats.Add(PixelFormat.Format8bppIndexed);
+            var indexedFormats = new List<PixelFormat> { PixelFormat.Indexed, PixelFormat.Format1bppIndexed,
+                PixelFormat.Format4bppIndexed, PixelFormat.Format8bppIndexed};
+
             return indexedFormats;
-        }
-
-        
-        
-        private Image TransformBigImage(Bitmap image)
-        {
-            xSize = image.Width;
-            ySize = image.Height;
-            colorsArray = new Color[xSize, ySize];
-
-            // применяемый способ считывания и записи картинки основан на примере,
-            // взятом отсюда: msdn.microsoft.com/ru-ru/library/system.drawing.imaging.bitmapdata(v=vs.110).aspx
-            // работает значительно быстрее чем GetPixel/SetPixel
-
-            var rect = new Rectangle(0, 0, xSize, ySize);
-
-            var bmpData = image.LockBits(rect, ImageLockMode.ReadWrite, image.PixelFormat);
-
-            var ptr = bmpData.Scan0;
-
-            int bytes = Math.Abs(bmpData.Stride) * ySize;
-
-
-            var rgbValues = new byte[bytes];
-
-            Marshal.Copy(ptr, rgbValues, 0, bytes);
-
-            int pixelX = 0;
-            int pixelY = 0;
-            for (int i = 0; i < bytes; i++)
-            {
-                if (i % 3 == 0 && i + 2 < bytes)
-                {
-                    colorsArray[pixelX, pixelY] = Color.FromArgb(rgbValues[i + 2], rgbValues[i + 1], rgbValues[i]);
-                    pixelX++;
-                    if (pixelX >= xSize)
-                    {
-                        if (pixelY < ySize - 1)
-                        {
-                            pixelY++;
-                            pixelX = 0;
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-
-                }
-            }
-
-
-            TransformImageArray();
-
-            var colors = new Color[xSize * ySize];
-            int counter = 0;
-            for (int y = 0; y < ySize; ++y)
-            {
-                for (int x = 0; x < xSize; ++x)
-                {
-                    colors[counter] = colorsArray[x, y];
-                    counter++;
-                }
-            }
-
-            for (int i = 0; i < colors.Length; i++)
-            {
-                if (i * 3 + 2 >= bytes)
-                {
-                    break;
-                }
-                rgbValues[i * 3] = colors[i].B;
-                rgbValues[i * 3 + 1] = colors[i].G;
-                rgbValues[i * 3 + 2] = colors[i].R;
-            }
-
-            Marshal.Copy(rgbValues, 0, ptr, bytes);
-            image.UnlockBits(bmpData);
-            return image;
-        }
-
-        private Image TransformSmallImage(Bitmap image)
-        {
-            xSize = image.Width;
-            ySize = image.Height;
-            colorsArray = new Color[xSize, ySize];
-
-            for (int x = 0; x < xSize; x++)
-            {
-                for (int y = 0; y < ySize; y++)
-                {
-                    colorsArray[x, y] = image.GetPixel(x, y);
-                }
-            }
-
-
-            TransformImageArray();
-
-            for (int x = 0; x < xSize; x++)
-            {
-                for (int y = 0; y < ySize; y++)
-                {
-                    image.SetPixel(x, y, colorsArray[x, y]);
-                }
-            }
-
-            return image;
         }
 
         public Image TransformImage(Image picture)
@@ -150,18 +38,10 @@ namespace PictureFilter
                     return null;
                 }
 
-                
-                // для маленьких картинок(иконки и т.п.) способ с помощью BitmapData работает неправильно,
-                // поэтому в этом случае используется способ с помощью SetPixel/GetPixel, который в силу малого
-                // размера картинки работает быстро
-                if (image.Height * image.Width >= smallSize * smallSize)
-                {
-                    return TransformBigImage(image);
-                }
-                else
-                {
-                    return TransformSmallImage(image);
-                }
+                var matrix = PictureReaderWriter.GetMatrix(image);
+                TransformImageArray(matrix);
+                PictureReaderWriter.WriteMatrixToBitmap(matrix, image);
+                return image;
             }
             catch (Exception)
             {
@@ -169,11 +49,18 @@ namespace PictureFilter
             }
         }
 
-        protected virtual void TransformImageArray()
+
+        // Методы TransformImageArray и ChangeColor оставлены виртуальными для того,
+        // чтобы была возможность добавить фильтры, в которых получаемый цвет пикселя зависит не только
+        // от самого пикселя но и от других пикселей(например размытие,акварелизация и др.).
+        // В таких фильтрах метод ChangeColor не нужен(поэтому он не должен быть абстрактным),
+        // вместо этого нужно переопределять метод TransformImageArray(поэтому он должен быть виртуальным).
+
+        protected virtual void TransformImageArray(Color[,] colorsArray)
         {
-            for (int x = 0; x < xSize; x++)
+            for (int x = 0; x < colorsArray.GetLength(0); x++)
             {
-                for (int y = 0; y < ySize; y++)
+                for (int y = 0; y < colorsArray.GetLength(1); y++)
                 {
                     colorsArray[x, y] = ChangeColor(colorsArray[x, y]);
                 }
